@@ -130,9 +130,9 @@ public:
     virtual void print_xml(ostream &out, string space = "    ",
                            bool constrained = false);
 
-    void print_dap4(XMLWriter &xml, bool constrained = false);
+    void print_dap4(XMLWriter &xml, bool constrained = false, bool close_item = true);
 
-    virtual void print_xml_writer(XMLWriter &xml, bool constrained = false);
+    virtual void print_xml_writer(XMLWriter &xml, bool constrained = false, bool close_item = true);
 
     virtual void print_decl(FILE *out, string space = "    ",
                             bool print_semi = true,

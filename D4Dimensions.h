@@ -187,7 +187,7 @@ public:
         d_dims.insert(i, dim);
     }
 
-    void print_dap4(XMLWriter &xml, bool constrained = false) const;
+    void print_dap4(XMLWriter &xml, bool constrained = false, bool close_item = true) const;
 };
 
 } /* namespace libdap */

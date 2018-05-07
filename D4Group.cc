@@ -569,7 +569,7 @@ void D4Group::deserialize(D4StreamUnMarshaller &um, DMR &dmr)
 }
 
 void
-D4Group::print_dap4(XMLWriter &xml, bool constrained)
+D4Group::print_dap4(XMLWriter &xml, bool constrained, bool close_item)
 {
     if (!name().empty() && name() != "/") {
         // For named groups, if constrained is true only print if this group
@@ -587,7 +587,7 @@ D4Group::print_dap4(XMLWriter &xml, bool constrained)
 
     // dims
     if (!dims()->empty())
-        dims()->print_dap4(xml, constrained);
+        dims()->print_dap4(xml, constrained, close_item);
 
     // enums
     if (!enum_defs()->empty())
@@ -596,7 +596,7 @@ D4Group::print_dap4(XMLWriter &xml, bool constrained)
     // variables
     Constructor::Vars_iter v = var_begin();
     while (v != var_end())
-        (*v++)->print_dap4(xml, constrained);
+        (*v++)->print_dap4(xml, constrained, close_item);
 
     // attributes
     attributes()->print_dap4(xml);
@@ -604,9 +604,9 @@ D4Group::print_dap4(XMLWriter &xml, bool constrained)
     // groups
     groupsIter g = d_groups.begin();
     while (g != d_groups.end())
-        (*g++)->print_dap4(xml, constrained);
+        (*g++)->print_dap4(xml, constrained, close_item);
 
-    if (!name().empty() && name() != "/") {
+    if ((!name().empty() && name() != "/") || close_item) {
         if (xmlTextWriterEndElement(xml.get_writer()) < 0)
             throw InternalErr(__FILE__, __LINE__, "Could not end " + type_name() + " element");
     }

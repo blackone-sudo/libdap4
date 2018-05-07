@@ -176,7 +176,7 @@ public:
     static DDS *getDDS(DMR &dmr);
     virtual DDS *getDDS();
 
-    void print_dap4(XMLWriter &xml, bool constrained = false);
+    void print_dap4(XMLWriter &xml, bool constrained = false, bool close_item = true);
 
     virtual void dump(std::ostream &strm) const ;
 };

@@ -1123,7 +1123,7 @@ BaseType::print_xml(ostream &out, string space, bool constrained)
     @param constrained If true, only print this if it's part part of the
     current projection. Default is False. */
 void
-BaseType::print_xml_writer(XMLWriter &xml, bool constrained)
+BaseType::print_xml_writer(XMLWriter &xml, bool constrained, bool close_item)
 {
     if (constrained && !send_p())
         return;
@@ -1141,8 +1141,10 @@ BaseType::print_xml_writer(XMLWriter &xml, bool constrained)
     if (!is_dap4() && get_attr_table().get_size() > 0)
         get_attr_table().print_xml_writer(xml);
 
-    if (xmlTextWriterEndElement(xml.get_writer()) < 0)
-        throw InternalErr(__FILE__, __LINE__, "Could not end " + type_name() + " element");
+    if (close_item) {
+        if (xmlTextWriterEndElement(xml.get_writer()) < 0)
+            throw InternalErr(__FILE__, __LINE__, "Could not end " + type_name() + " element");
+    }
 }
 
 /** Write the DAP4 XML representation for this variable. This method is used
@@ -1153,9 +1155,9 @@ BaseType::print_xml_writer(XMLWriter &xml, bool constrained)
  * to the current constraint expression.
  */
 void
-BaseType::print_dap4(XMLWriter &xml, bool constrained)
+BaseType::print_dap4(XMLWriter &xml, bool constrained, bool close_item)
 {
-    print_xml_writer(xml, constrained);
+    print_xml_writer(xml, constrained, close_item);
 }
 
 // Compares the object's current state with the semantics of a particular

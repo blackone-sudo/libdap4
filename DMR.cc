@@ -428,7 +428,7 @@ DMR::request_size(bool constrained)
  * False
  */
 void
-DMR::print_dap4(XMLWriter &xml, bool constrained)
+DMR::print_dap4(XMLWriter &xml, bool constrained, bool close_item)
 {
     if (xmlTextWriterStartElement(xml.get_writer(), (const xmlChar*) "Dataset") < 0)
         throw InternalErr(__FILE__, __LINE__, "Could not write Dataset element");
@@ -466,10 +466,12 @@ DMR::print_dap4(XMLWriter &xml, bool constrained)
     if (xmlTextWriterWriteAttribute(xml.get_writer(), (const xmlChar*) "name", (const xmlChar*)name().c_str()) < 0)
         throw InternalErr(__FILE__, __LINE__, "Could not write attribute for name");
 
-    root()->print_dap4(xml, constrained);
+    root()->print_dap4(xml, constrained, close_item);
 
-    if (xmlTextWriterEndElement(xml.get_writer()) < 0)
-        throw InternalErr(__FILE__, __LINE__, "Could not end the top-level Group element");
+    if (close_item) {
+        if (xmlTextWriterEndElement(xml.get_writer()) < 0)
+            throw InternalErr(__FILE__, __LINE__, "Could not end the top-level Group element");
+    }
 }
 
 

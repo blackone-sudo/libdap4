@@ -837,7 +837,7 @@ public:
 };
 
 void
-Grid::print_xml_writer(XMLWriter &xml, bool constrained)
+Grid::print_xml_writer(XMLWriter &xml, bool constrained, bool close_item)
 {
     if (constrained && !send_p())
         return;
@@ -852,7 +852,7 @@ Grid::print_xml_writer(XMLWriter &xml, bool constrained)
 
         get_attr_table().print_xml_writer(xml);
 
-        get_array()->print_xml_writer(xml, constrained);
+        get_array()->print_xml_writer(xml, constrained, close_item);
 
         for_each(map_begin(), map_end(),
                  PrintGridFieldXMLWriter(xml, constrained, "Array"));
@@ -872,13 +872,15 @@ Grid::print_xml_writer(XMLWriter &xml, bool constrained)
 
         get_attr_table().print_xml_writer(xml);
 
-        get_array()->print_xml_writer(xml, constrained);
+        get_array()->print_xml_writer(xml, constrained, close_item);
 
         for_each(map_begin(), map_end(),
                  PrintGridFieldXMLWriter(xml, constrained, "Map"));
 
-        if (xmlTextWriterEndElement(xml.get_writer()) < 0)
-            throw InternalErr(__FILE__, __LINE__, "Could not end Grid element");
+        if (close_item) {
+            if (xmlTextWriterEndElement(xml.get_writer()) < 0)
+                throw InternalErr(__FILE__, __LINE__, "Could not end Grid element");
+        }
     }
 }
 

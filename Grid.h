@@ -172,7 +172,7 @@ public:
 
     virtual void print_xml(ostream &out, string space = "    ",
                            bool constrained = false);
-    virtual void print_xml_writer(XMLWriter &xml, bool constrained = false);
+    virtual void print_xml_writer(XMLWriter &xml, bool constrained = false, bool close_item = true);
 
     virtual void print_val(ostream &out, string space = "",
                            bool print_decl_p = true);

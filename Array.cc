@@ -964,7 +964,7 @@ public:
  * @param constrained
  */
 void
-Array::print_dap4(XMLWriter &xml, bool constrained /* default: false*/)
+Array::print_dap4(XMLWriter &xml, bool constrained /* default: false*/, bool close_item /* default: true*/)
 {
 	if (constrained && !send_p()) return;
 
@@ -1000,8 +1000,10 @@ Array::print_dap4(XMLWriter &xml, bool constrained /* default: false*/)
 
 	for_each(maps()->map_begin(), maps()->map_end(), PrintD4MapXMLWriter(xml));
 
-	if (xmlTextWriterEndElement(xml.get_writer()) < 0)
-		throw InternalErr(__FILE__, __LINE__, "Could not end " + type_name() + " element");
+    if (close_item) {
+        if (xmlTextWriterEndElement(xml.get_writer()) < 0)
+            throw InternalErr(__FILE__, __LINE__, "Could not end " + type_name() + " element");
+    }
 }
 
 /** Prints a declaration for the Array.  This is what appears in a
@@ -1139,7 +1141,7 @@ Array::print_xml_core(ostream &out, string space, bool constrained, string tag)
 }
 
 void
-Array::print_xml_writer(XMLWriter &xml, bool constrained)
+Array::print_xml_writer(XMLWriter &xml, bool constrained, bool close_item)
 {
     print_xml_writer_core(xml, constrained, "Array");
 }

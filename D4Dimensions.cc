@@ -120,7 +120,7 @@ D4Dimensions::find_dim(const string &name)
 }
 
 void
-D4Dimensions::print_dap4(XMLWriter &xml, bool constrained) const
+D4Dimensions::print_dap4(XMLWriter &xml, bool constrained, bool close_item) const
 {
     D4DimensionsCIter i = d_dims.begin();
     while (i != d_dims.end()) {
