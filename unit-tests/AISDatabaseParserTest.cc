@@ -28,6 +28,7 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/extensions/HelperMacros.h>
 
+#include "GetOpt.h"
 #include "AISDatabaseParser.h"
 #include <test_config.h>
 #include "debug.h"
@@ -35,6 +36,13 @@
 using namespace CppUnit;
 using namespace std;
 using namespace libdap;
+
+/// Added jhrg
+static bool debug = false;
+
+#undef DBG
+#define DBG(x) do { if (debug) (x); } while(false);
+/// jhrg
 
 class AISDatabaseParserTest: public TestFixture {
 private:
@@ -184,8 +192,8 @@ int main(int argc, char *argv[])
 
         case 'h': {     // help - show test names
             cerr << "Usage: AISDatabaseParserTest has the following tests:" << endl;
-            const std::vector<Test*> &tests = libdap::AISDatabaseParserTest::suite()->getTests();
-            unsigned int prefix_len = libdap::AISDatabaseParserTest::suite()->getName().append("::").length();
+            const std::vector<Test*> &tests = AISDatabaseParserTest::suite()->getTests();
+            unsigned int prefix_len = AISDatabaseParserTest::suite()->getName().append("::").length();
             for (std::vector<Test*>::const_iterator i = tests.begin(), e = tests.end(); i != e; ++i) {
                 cerr << (*i)->getName().replace(0, prefix_len, "") << endl;
             }
@@ -209,7 +217,7 @@ int main(int argc, char *argv[])
     else {
         for (; i < argc; ++i) {
             if (debug) cerr << "Running " << argv[i] << endl;
-            test = libdap::AISDatabaseParserTest::suite()->getName().append("::").append(argv[i]);
+            test = AISDatabaseParserTest::suite()->getName().append("::").append(argv[i]);
             wasSuccessful = wasSuccessful && runner.run(test);
         }
     }

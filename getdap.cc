@@ -48,6 +48,7 @@
 
 #include "Sequence.h"
 #include "Connect.h"
+#include "AISConnect.h"
 #include "Response.h"
 #include "StdinResponse.h"
 
@@ -135,7 +136,7 @@ static void print_data(DDS & dds, bool print_rows = false)
 
 int main(int argc, char *argv[])
 {
-    GetOpt getopt(argc, argv, "idaDxrXBVvkc:m:zshM?Hp:t");
+    GetOpt getopt(argc, argv, "idaADxrXBVvkc:m:zshM?Hp:t");
     int option_char;
 
     bool get_das = false;
@@ -150,6 +151,7 @@ int main(int argc, char *argv[])
     bool accept_deflate = false;
     bool print_rows = false;
     bool mime_headers = true;
+    bool use_ais = false;
     int times = 1;
     int dap_client_major = 2;
     int dap_client_minor = 0;
@@ -164,6 +166,9 @@ int main(int argc, char *argv[])
         case 'd':
             get_dds = true;
             break;
+        case 'A':
+            use_ais = true;
+            // intentional fall through. jhrg 8/29/19
         case 'a':
             get_das = true;
             break;
@@ -233,7 +238,10 @@ int main(int argc, char *argv[])
             string name = argv[i];
             Connect *url = 0;
 
-            url = new Connect(name);
+            if (use_ais)
+                url = new AISConnect(name);
+            else
+                url = new Connect(name);
 
             // This overrides the value set in the .dodsrc file.
             if (accept_deflate)

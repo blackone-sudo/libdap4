@@ -269,11 +269,11 @@ DAP_SRC = AttrTable.cc DAS.cc DDS.cc DataDDS.cc DDXParserSAX2.cc	\
 	MarshallerThread.cc
 
 DAP4_ONLY_SRC = D4StreamMarshaller.cc D4StreamUnMarshaller.cc Int64.cc \
-        UInt64.cc Int8.cc D4ParserSax2.cc D4BaseTypeFactory.cc \
-        D4Dimensions.cc  D4EnumDefs.cc D4Group.cc DMR.cc \
-        D4Attributes.cc D4Enum.cc chunked_ostream.cc chunked_istream.cc \
-        D4Sequence.cc D4Maps.cc D4Opaque.cc D4AsyncUtil.cc D4RValue.cc \
-        D4FilterClause.cc
+    UInt64.cc Int8.cc D4ParserSax2.cc D4BaseTypeFactory.cc \
+    D4Dimensions.cc  D4EnumDefs.cc D4Group.cc DMR.cc \
+    D4Attributes.cc D4Enum.cc chunked_ostream.cc chunked_istream.cc \
+    D4Sequence.cc D4Maps.cc D4Opaque.cc D4AsyncUtil.cc D4RValue.cc \
+    D4FilterClause.cc
 
 Operators.h: ce_expr.tab.hh
 
@@ -281,7 +281,8 @@ Operators.h: ce_expr.tab.hh
 # with the other headers. It includes one of the built grammar file headers.
 
 CLIENT_SRC = RCReader.cc Connect.cc HTTPConnect.cc HTTPCache.cc	\
-	util_mit.cc ResponseTooBigErr.cc HTTPCacheTable.cc
+	util_mit.cc ResponseTooBigErr.cc HTTPCacheTable.cc AISConnect.cc \
+	AISDatabaseParser.cc AISMerge.cc AISResources.cc
 
 DAP4_CLIENT_SRC = D4Connect.cc
 
@@ -304,11 +305,11 @@ DAP_HDR = AttrTable.h DAS.h DDS.h DataDDS.h DDXParserSAX2.h		\
 	DapXmlNamespaces.h parser-util.h MarshallerThread.h
 
 DAP4_ONLY_HDR = D4StreamMarshaller.h D4StreamUnMarshaller.h Int64.h \
-        UInt64.h Int8.h D4ParserSax2.h D4BaseTypeFactory.h \
-        D4Maps.h D4Dimensions.h D4EnumDefs.h D4Group.h DMR.h D4Attributes.h \
-        D4AttributeType.h D4Enum.h chunked_stream.h chunked_ostream.h \
-        chunked_istream.h D4Sequence.h crc.h D4Opaque.h D4AsyncUtil.h \
-        D4Function.h D4RValue.h D4FilterClause.h
+    UInt64.h Int8.h D4ParserSax2.h D4BaseTypeFactory.h \
+    D4Maps.h D4Dimensions.h D4EnumDefs.h D4Group.h DMR.h D4Attributes.h \
+    D4AttributeType.h D4Enum.h chunked_stream.h chunked_ostream.h \
+    chunked_istream.h D4Sequence.h crc.h D4Opaque.h D4AsyncUtil.h \
+    D4Function.h D4RValue.h D4FilterClause.h
 
 if USE_C99_TYPES
 dods-datatypes.h: dods-datatypes-static.h
@@ -325,7 +326,9 @@ CLIENT_HDR = RCReader.h Connect.h HTTPConnect.h HTTPCache.h		\
 	HTTPCacheDisconnectedMode.h HTTPCacheInterruptHandler.h		\
 	Response.h HTTPResponse.h HTTPCacheResponse.h PipeResponse.h	\
 	StdinResponse.h SignalHandlerRegisteredErr.h			\
-	ResponseTooBigErr.h Resource.h HTTPCacheTable.h HTTPCacheMacros.h
+	ResponseTooBigErr.h Resource.h HTTPCacheTable.h HTTPCacheMacros.h \
+	AISConnect.h AISDatabaseParser.h AISMerge.h AISResources.h \
+	AISExceptions.h
 
 DAP4_CLIENT_HDR = D4Connect.h
 

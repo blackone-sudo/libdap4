@@ -82,7 +82,8 @@ UNIT_TESTS = marshT arrayT attrTableT structT sequenceT ddsT dasT \
 	RCReaderTest SequenceTest SignalHandlerTest  MarshallerTest \
 	HTTPCacheTest ServerFunctionsListUnitTest Int8Test Int16Test UInt16Test \
 	Int32Test UInt32Test Int64Test UInt64Test Float32Test Float64Test \
-	D4BaseTypeFactoryTest BaseTypeFactoryTest
+	D4BaseTypeFactoryTest BaseTypeFactoryTest AISDatabaseParserTest \
+	AISMergeTest AISResourcesTest
 
 if DAP4_DEFINED
 UNIT_TESTS += D4MarshallerTest D4UnMarshallerTest D4DimensionsTest \
@@ -229,6 +230,18 @@ ServerFunctionsListUnitTest_LDADD = ../libdap.la $(AM_LDADD)
 
 # ResponseCacheTest_SOURCES = ResponseCacheTest.cc
 # ResponseCacheTest_LDADD = ../tests/libtest-types.a ../libdapserver.la ../libdap.la $(AM_LDADD)
+
+AISDatabaseParserTest_SOURCES = AISDatabaseParserTest.cc
+AISDatabaseParserTest_CPPFLAGS = $(AM_CPPFLAGS) $(CURL_CFLAGS)
+AISDatabaseParserTest_LDADD = ../libdapclient.la ../libdap.la $(AM_LDADD)
+
+AISMergeTest_SOURCES = AISMergeTest.cc
+AISMergeTest_CPPFLAGS = $(AM_CPPFLAGS) $(CURL_CFLAGS)
+AISMergeTest_LDADD = ../libdapclient.la ../libdap.la $(AM_LDADD)
+
+AISResourcesTest_SOURCES = AISResourcesTest.cc
+AISResourcesTest_CPPFLAGS = $(AM_CPPFLAGS) $(CURL_CFLAGS)
+AISResourcesTest_LDADD = ../libdapclient.la ../libdap.la $(AM_LDADD)
 
 if DAP4_DEFINED
 
