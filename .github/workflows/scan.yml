@@ -8,18 +8,13 @@ jobs:
   sonar-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: update system
-        run: |
-          sudo apt-get update
-          sudo apt-get -y upgrade
-
       - name: checkout
         uses: actions/checkout@v2
 
       - name: Sonarqube installation
         run: |
-          wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.3.zip
-          apt-get -y install unzip
+          sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.3.zip
+          sudo apt-get -y install unzip
           sudo unzip sonarqube-7.3.zip -d /opt
           sudo mv /opt/sonarqube-7.3 /opt/sonarqube
           sudo chown -R administrator:administrator /opt/sonarqube/
