@@ -18,10 +18,8 @@ jobs:
           sudo unzip sonarqube-7.3.zip -d /opt
           sudo mv /opt/sonarqube-7.3 /opt/sonarqube
       
-      - name: current directory
-        run: |
-          pwd
-          ls 
+      - name: start
+        run: bin/linux-x86-64/sonar.sh start 
           
 
 #run
