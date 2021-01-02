@@ -19,6 +19,6 @@ jobs:
           sudo mv /opt/sonarqube-7.3 /opt/sonarqube
       
       - name: start
-        run: /opt/sonarqube/bin/[OS]/sonar.sh console
+        run: ./opt/sonarqube/bin/[OS]/sonar.sh console
 
 ###
