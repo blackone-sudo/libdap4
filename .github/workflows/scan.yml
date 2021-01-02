@@ -22,7 +22,7 @@ jobs:
         run: |
           set -x
           export LIBDAP_BUILD=sonar
-          ./configure --disable-dependency-tracking  --prefix=$prefix --enable-developer --enable-coverage
+          ./configure --prefix=$prefix --enable-developer --enable-coverage
           build-wrapper-linux-x86-64 --out-dir bw-output make -j7
           sonar-scanner -Dsonar.login=$SONAR_LOGIN
           curl -s https://sonarcloud.io/api/project_badges/quality_gate?project=OPENDAP-libdap4 | grep "QUALITY GATE PASS"
