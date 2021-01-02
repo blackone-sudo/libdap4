@@ -17,10 +17,5 @@ jobs:
           sudo apt-get -y install unzip
           sudo unzip sonarqube-7.3.zip -d /opt
           sudo mv /opt/sonarqube-7.3 /opt/sonarqube
+          sudo chown -R admin:admin /opt/sonarqube/
          
-          
-
-      
-
-
-
