@@ -25,4 +25,4 @@ jobs:
           sonar-scanner -Dsonar.login=$SONAR_LOGIN
           curl -s https://sonarcloud.io/api/project_badges/quality_gate?project=OPENDAP-libdap4 | grep "QUALITY GATE PASS"
 
-         
+         #
