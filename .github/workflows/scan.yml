@@ -16,19 +16,9 @@ jobs:
           set -x
           sudo mkdir /downloads/sonar-scanner -p
           cd /downloads/sonar-scanner
-          echo "downloading sonar-scanner...."
           sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
-          echo "Download completed."
-          echo "Unzipping downloaded file...."
           sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip
-          echo "Unzip complete"
           ls -lart
           sudo mv sonar-scanner-4.2.0.1873-linux /bin/sonar-scanner
           ls /bin/sonar-scanner
-          echo "Installation completed successfully."
-          echo "You can use sonar-scanner!"
-    
-  
-          
 
-###
