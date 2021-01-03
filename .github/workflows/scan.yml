@@ -23,7 +23,7 @@ jobs:
           sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Unzip complete"
           ls -lart
-          sudo mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
+          mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
           ls /opt/sonar-scanner
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
