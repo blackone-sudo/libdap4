@@ -29,6 +29,6 @@ jobs:
       - name: current directory
         run: |
           find /downloads/sonar-scanner
-          find /conf/sonar-scanner.properties
+          
 
 ###
