@@ -14,14 +14,14 @@ jobs:
       - name: Download & install sonar-scanner
         run: |
           set -x
-          mkdir /downloads/sonar-scanner -p
+          sudo mkdir /downloads/sonar-scanner -p
           cd /downloads/sonar-scanner
           echo "downloading sonar-scanner...."
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+          sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Download completed."
           echo "Unzipping downloaded file...."
-          unzip sonar-scanner-cli-4.2.0.1873-linux.zip
+          sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Unzip complete"
-          mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
+          sudo mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
