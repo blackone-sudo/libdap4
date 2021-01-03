@@ -26,6 +26,7 @@ jobs:
         run: |
           set -x
           echo "Unzipping downloaded file...."
+          cd -d /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip
           unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           rm sonar-scanner-4.2.0.1873-linux.zip
           echo "Unzip complete"
