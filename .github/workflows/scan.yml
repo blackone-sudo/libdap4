@@ -14,7 +14,7 @@ jobs:
       - name: Download & install sonar-scanner
         run: |
           set -x
-          sudo mkdir /downloads/sonar-scanner -p
+          sudo mkdir ./downloads/sonar-scanner -p
           cd /downloads/sonar-scanner
           echo "downloading sonar-scanner...."
           sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
