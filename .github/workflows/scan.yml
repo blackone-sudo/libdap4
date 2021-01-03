@@ -11,34 +11,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Download sonar-scanner
+      - name: Download & install sonar-scanner
         run: |
           set -x
-          cd /tmp || exit
+          mkdir /downloads/sonar-scanner -p
+          cd /downloads/sonar-scanner
           echo "downloading sonar-scanner...."
-          if [ -d "/tmp/sonar-scanner-cli-4.2.0.1873-linux.zip" ];then
-            sudo rm /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip
-          fi
-          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Download completed."
-
-      - name: Unzip Download
-        run: |
-          set -x
           echo "Unzipping downloaded file...."
-          cd /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip
           unzip sonar-scanner-cli-4.2.0.1873-linux.zip
-          rm sonar-scanner-4.2.0.1873-linux.zip
           echo "Unzip complete"
-
-#here get issues
-
-      - name: Installing to opt
-        run: |
-          set -x
-          if [ -d "/var/opt/sonar-scanner-cli-4.2.0.1873-linux" ];then
-            sudo rm -rf /var/opt/sonar-scanner-cli-4.2.0.1873-linux
-          fi
-          sudo mv sonar-scanner-cli-4.2.0.1873-linux /var/opt
+          mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
