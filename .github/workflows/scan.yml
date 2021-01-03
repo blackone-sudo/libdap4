@@ -14,7 +14,7 @@ jobs:
       - name: Download & install sonar-scanner
         run: |
           set -x
-          sudo mkdir ./downloads/sonar-scanner -p
+          sudo mkdir /downloads/sonar-scanner -p
           cd /downloads/sonar-scanner
           echo "downloading sonar-scanner...."
           sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
@@ -27,9 +27,6 @@ jobs:
           echo "You can use sonar-scanner!"
     
       - name: current directory
-        run: |
-          set -x
-          export LIBDAP_BUILD=sonar
-          sonar-scanner -Dsonar.login=$SONAR_LOGIN
-          curl -s https://sonarcloud.io/api/project_badges/quality_gate?project=OPENDAP-libdap4 | grep "QUALITY GATE PASS"
+        run: find /downloads/sonar-scanner
+        
 ###
