@@ -25,3 +25,6 @@ jobs:
           sudo mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
+
+      - name: sonar scanner version
+        run: sonar-scanner -v
