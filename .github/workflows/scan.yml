@@ -17,7 +17,7 @@ jobs:
           cd /tmp || exit
           echo "downloading sonar-scanner...."
           if [ -d "/tmp/sonar-scanner-cli-4.2.0.1873-linux.zip" ];then
-            sudo rm /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip.zip
+            sudo rm /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip
           fi
           wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Download completed."
@@ -25,8 +25,6 @@ jobs:
       - name: Unzip Download
         run: |
           set -x
-          pwd
-          cd /temp
           echo "Unzipping downloaded file...."
           unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           rm sonar-scanner-4.2.0.1873-linux.zip
