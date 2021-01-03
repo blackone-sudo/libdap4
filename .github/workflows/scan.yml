@@ -11,14 +11,31 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Sonarqube installation
+      - name: Download sonar-scanner
         run: |
-          sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.3.zip
-          sudo apt-get -y install unzip
-          sudo unzip sonarqube-7.3.zip -d /opt
-          sudo mv /opt/sonarqube-7.3 /opt/sonarqube
-      
-      - name: start
-        run: ./opt/sonarqube/bin/[OS]/sonar.sh console
+          set -x
+          cd /tmp || exit
+          echo "downloading sonar-scanner...."
+          if [ -d "/tmp/sonar-scanner-cli-4.5.0.2216-linux.zip" ];then
+            sudo rm /tmp/sonar-scanner-cli-4.5.0.2216-linux.zip.zip
+          fi
+          wget -q https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
+          echo "Download completed."
 
-###
+      - name: Unzip Download
+        run: |
+          set -x
+          echo "Unzipping downloaded file...."
+          unzip sonar-scanner-cli-4.5.0.2216-linux.zip
+          echo "Unzip complete"
+          rm sonar-scanner-cli-4.5.0.2216-linux.zip
+
+      - name: Installing to opt
+        run: |
+          set -x
+          if [ -d "/var/opt/sonar-scanner-cli-4.5.0.2216-linux" ];then
+            sudo rm -rf /var/opt/sonar-scanner-cli-4.5.0.2216-linux
+          fi
+          sudo mv sonar-scanner-cli-4.5.0.2216-linux /var/opt
+          echo "Installation completed successfully."
+          echo "You can use sonar-scanner!"
