@@ -16,26 +16,26 @@ jobs:
           set -x
           cd /tmp || exit
           echo "downloading sonar-scanner...."
-          if [ -d "/tmp/sonar-scanner-cli-4.5.0.2216-linux.zip" ];then
-            sudo rm /tmp/sonar-scanner-cli-4.5.0.2216-linux.zip.zip
+          if [ -d "/tmp/sonar-scanner-cli-4.2.0.1873-linux.zip" ];then
+            sudo rm /tmp/sonar-scanner-cli-4.2.0.1873-linux.zip.zip
           fi
-          wget -q https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
+          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Download completed."
 
       - name: Unzip Download
         run: |
           set -x
           echo "Unzipping downloaded file...."
-          unzip sonar-scanner-cli-4.5.0.2216-linux.zip
+          unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Unzip complete"
-          rm sonar-scanner-cli-4.5.0.2216-linux.zip
+          rm sonar-scanner-cli-4.2.0.1873-linux.zip
 
       - name: Installing to opt
         run: |
           set -x
-          if [ -d "/var/opt/sonar-scanner-cli-4.5.0.2216-linux" ];then
-            sudo rm -rf /var/opt/sonar-scanner-cli-4.5.0.2216-linux
+          if [ -d "/var/opt/sonar-scanner-cli-4.2.0.1873-linux" ];then
+            sudo rm -rf /var/opt/sonar-scanner-cli-4.2.0.1873-linux
           fi
-          sudo mv sonar-scanner-cli-4.5.0.2216-linux /var/opt
+          sudo mv sonar-scanner-cli-4.2.0.1873-linux /var/opt
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
