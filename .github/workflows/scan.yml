@@ -22,8 +22,9 @@ jobs:
           sudo mv /opt/sonar-scanner-4.2.0.1873-linux/ /opt/sonar-scanner
           ls /opt/sonar-scanner
           #cd /opt/sonar-scanner
+          sudo chmod 700 /opt/sonar-scanner/conf/sonar-scanner.properties
           sudo echo "sonar.host.url=https://sonarcloud.io" >> /opt/sonar-scanner/conf/sonar-scanner.properties
-          #sudo echo "sonar.login=$SONAR_LOGIN" >> /opt/sonar-scanner/conf/sonar-scanner.properties
+          sudo echo "sonar.login=$SONAR_LOGIN" >> /opt/sonar-scanner/conf/sonar-scanner.properties
           #cd ../..
           #ls 
           #pwd
