@@ -28,7 +28,7 @@ jobs:
           echo "Unzipping downloaded file...."
           unzip sonar-scanner-cli-4.2.0.1873-linux.zip
           echo "Unzip complete"
-          rm sonar-scanner-cli-4.2.0.1873-linux.zip
+          rm sonar-scanner-cli-4.2.0.1873-linux
 #here get issues
 
       - name: Installing to opt
