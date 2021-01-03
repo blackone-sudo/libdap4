@@ -24,7 +24,7 @@ jobs:
           echo "Unzip complete"
           ls -lart
           sudo mv sonar-scanner-4.2.0.1873-linux /bin/sonar-scanner
-          ls /opt/sonar-scanner
+          ls /bin/sonar-scanner
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
     
