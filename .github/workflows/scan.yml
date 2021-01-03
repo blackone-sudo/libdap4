@@ -17,10 +17,10 @@ jobs:
           sudo mkdir /downloads/sonar-scanner -p
           cd /downloads/sonar-scanner
           sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
-          sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip
+          sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip -d /opt/
           ls -lart
-          sudo mv sonar-scanner-4.2.0.1873-linux /bin/sonar-scanner
-          ls /bin/sonar-scanner
-          cd /bin/sonar-scanner
+          sudo mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
+          ls /opt/sonar-scanner
+          cd /opt/sonar-scanner
           pwd
 
