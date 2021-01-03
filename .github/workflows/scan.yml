@@ -29,7 +29,7 @@ jobs:
       - name: current directory
         run: |
           set -x
-          pwd
-          cd /downloads/sonar-scanner/conf/sonar-scanner.properties
-          pwd
+          export LIBDAP_BUILD=sonar
+          sonar-scanner -Dsonar.login=$SONAR_LOGIN
+          curl -s https://sonarcloud.io/api/project_badges/quality_gate?project=OPENDAP-libdap4 | grep "QUALITY GATE PASS"
 ###
