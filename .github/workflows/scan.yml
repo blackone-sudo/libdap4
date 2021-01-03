@@ -27,6 +27,8 @@ jobs:
           echo "You can use sonar-scanner!"
     
       - name: current directory
-        run: find /downloads/sonar-scanner
-        
+        run: |
+          find /downloads/sonar-scanner
+          find /conf/sonar-scanner.properties
+
 ###
