@@ -26,5 +26,4 @@ jobs:
           echo "Installation completed successfully."
           echo "You can use sonar-scanner!"
 
-      - name: sonar scanner version
-        run: sonar-scanner -v
+###
